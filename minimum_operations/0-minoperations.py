@@ -10,7 +10,7 @@ Example:
 
 n = 9
 
-H => Copy All => Paste => HH => Paste =>HHH => Copy All => Paste => HHHHHH => Paste => HHHHHHHHH
+H => Copy All => Paste => HH => Paste => HHH => Copy All => Paste => HHHHH => Paste => HHHHHHHHH
 
 Number of operations: 6
 """
@@ -30,27 +30,25 @@ def minOperations(n):
     if n <= 1:
         return 0
 
-    # Initialize variables to keep track of current number and operations
-    current = 1  # Start with one 'H' in the file
-    operations = 0
+    # Initialize an array to store the minimum operations for each position
+    dp = [float('inf')] * (n + 1)
 
-    while current < n:
-        if n % current == 0:
-            # If current is a divisor of n, perform a Copy All and Paste operation
-            current *= 2
-            operations += 2
-        else:
-            # If current is not a divisor, perform a Paste operation
-            current += current
-            operations += 1
+    # Base case: 0 operations needed to reach 1 'H'
+    dp[1] = 0
 
-    return operations
+    # Iterate through each position and update the minimum operations
+    for i in range(2, n + 1):
+        for j in range(1, i):
+            if i % j == 0:
+                dp[i] = min(dp[i], dp[j] + i // j)
 
-# Testing the function with the provided examples
+    return dp[n]
+
+# Testing the function
 if __name__ == "__main__":
     n1 = 4
-    print("Min # of operations to reach {} char: {}".format(n1, minOperations(n1)))
+    print("Min number of operations to reach {} characters: {}".format(n1, minOperations(n1)))
 
     n2 = 12
-    print("Min # of operations to reach {} char: {}".format(n2, minOperations(n2)))
+    print("Min number of operations to reach {} characters: {}".format(n2, minOperations(n2)))
 
