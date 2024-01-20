@@ -30,18 +30,19 @@ def minOperations(n):
     if n <= 1:
         return 0
 
-    operations = 0
-    current = 1
+    # Initialize an array to store the minimum operations for each position
+    dp = [float('inf')] * (n + 1)
 
-    while current < n:
-        if n % current == 0:
-            current *= 2
-            operations += 2
-        else:
-            current += current
-            operations += 1
+    # Base case: 0 operations needed to reach 1 'H'
+    dp[1] = 0
 
-    return operations
+    # Iterate through each position and update the minimum operations
+    for i in range(2, n + 1):
+        for j in range(1, i):
+            if i % j == 0:
+                dp[i] = min(dp[i], dp[j] + i // j)
+
+    return dp[n]
 
 # Testing the function
 if __name__ == "__main__":
