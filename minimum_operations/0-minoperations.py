@@ -38,7 +38,7 @@ def minOperations(n):
 
     # Iterate through each position and update the minimum operations
     for i in range(2, n + 1):
-        for j in range(1, i):
+        for j in range(1, i // 2 + 1):  # Adjusted the range to optimize and avoid redundancy
             if i % j == 0:
                 dp[i] = min(dp[i], dp[j] + i // j)
 
@@ -51,4 +51,3 @@ if __name__ == "__main__":
 
     n2 = 12
     print("Min number of operations to reach {} characters: {}".format(n2, minOperations(n2)))
-
