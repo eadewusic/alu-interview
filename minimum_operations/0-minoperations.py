@@ -15,6 +15,7 @@ H => Copy All => Paste => HH => Paste => HHH => Copy All => Paste => HHHHH => Pa
 Number of operations: 6
 """
 
+
 def minOperations(n):
     """
     Calculate the fewest number of operations needed to result in exactly n 'H' characters in the file.
@@ -41,10 +42,15 @@ def minOperations(n):
 
     return operations
 
+
 # Testing the function
 if __name__ == "__main__":
     n1 = 4
-    print("Min number of operations to reach {} characters: {}".format(n1, minOperations(n1)))
+    print(
+        "Min number of operations to reach {} characters: {}".format(
+            n1, minOperations(n1)))
 
     n2 = 12
-    print("Min number of operations to reach {} characters: {}".format(n2, minOperations(n2)))
+    print(
+        "Min number of operations to reach {} characters: {}".format(
+            n2, minOperations(n2)))
