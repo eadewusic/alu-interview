@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 """
 Module to generate Pascal's triangle up to a specified number of rows.
