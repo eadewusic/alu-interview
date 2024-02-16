@@ -4,6 +4,7 @@
 Module to generate Pascal's triangle up to a specified number of rows.
 """
 
+
 def pascal_triangle(n):
     """
     Generate Pascal's triangle up to the nth row.
@@ -27,6 +28,7 @@ def pascal_triangle(n):
         triangle.append(row)
 
     return triangle
+
 
 # Test the function
 if __name__ == "__main__":
